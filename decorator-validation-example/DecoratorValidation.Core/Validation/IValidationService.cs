@@ -1,13 +1,10 @@
 ﻿namespace DecoratorValidation.Core
 {
     public interface IValidationService
-    { 
-        IValidationNode Root { get; }
-
-        IValidationNode CreateNode(IValidationNode parent);
+    {
+        void Register(IValidationNode node);
+        void Unregister(IValidationNode node);
 
         void QueryValidation(IValidationNode root);
-
-        void Initialize();
     }
 }

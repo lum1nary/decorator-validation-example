@@ -12,8 +12,6 @@ namespace DecoratorValidation.Core
 
         INodeViewModel Node { get; }
 
-        IValidationState ValidationState { get; }
-
-        void Initialize(INodeViewModel node);
+        IValidationResult ValidationState { get; }
     }
 }

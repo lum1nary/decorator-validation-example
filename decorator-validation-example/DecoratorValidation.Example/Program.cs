@@ -29,7 +29,7 @@ namespace DecoratorValidation.Example
 
         private static void DisplayStructure(INodeViewModel root, int depth = 0)
         {
-            Console.WriteLine($"{new string(' ', depth)}[{root.NodeType}]");
+            Console.WriteLine($"{new string(' ', depth)} {root.GetType()}");
             foreach (var child in root.Children)
             {
                 DisplayStructure(child, depth + 1);

@@ -4,7 +4,7 @@
     {
         public IValidationNode CreateRoot()
         {
-            return new RootValidationNode();
+            return Create(null);
         }
 
         public IValidationNode Create(IValidationNode parent)

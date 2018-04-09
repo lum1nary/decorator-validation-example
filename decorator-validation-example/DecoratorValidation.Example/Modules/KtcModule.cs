@@ -9,11 +9,18 @@ namespace DecoratorValidation.Example.Modules
     {
         protected override DocumentType Key => DocumentType.KTC;
 
+
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<KtcDocumentNodeFactory>()
-                .Keyed<IDocumentNodeFactory>(Key)
+                //.Keyed<IDocumentNodeFactory>(Key)
+                .Keyed<IDocumentNodeFactory>(DecoratorKey)
                 .SingleInstance();
+
+            //Remove Decorator to remove validation
+            builder.RegisterDecorator<IDocumentNodeFactory>((c, factory) =>
+                new NodeFactoryValidationDecorator(factory, c.Resolve<IValidationService>()), DecoratorKey)
+                .Keyed<IDocumentNodeFactory>(Key).SingleInstance();
 
             builder.Register(c => new KtcDocumentHeaderFactory(c.ResolveKeyed<IDocumentNodeFactory>(Key)))
                 .Keyed<IDocumentHeaderFactory>(Key)

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\decorator-validation-example\DecoratorValidation.Core.csproj" />
+    <ProjectReference Include="..\DecoratorValidation.Core\DecoratorValidation.Core.csproj" />
   </ItemGroup>
 
 </Project>
