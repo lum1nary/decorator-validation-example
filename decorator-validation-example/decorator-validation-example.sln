@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorValidation.Core", "decorator-validation-example\DecoratorValidation.Core.csproj", "{7A51F12C-F2C8-48CA-ABAD-2B4CFAA484A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorValidation.Core", "DecoratorValidation.Core\DecoratorValidation.Core.csproj", "{7A51F12C-F2C8-48CA-ABAD-2B4CFAA484A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorValidation.Testing", "DecoratorValidation.Testing\DecoratorValidation.Testing.csproj", "{39ECC2C6-0360-4C94-B84E-DBE01C55A7D1}"
 EndProject

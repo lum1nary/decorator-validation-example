@@ -1,0 +1,35 @@
+﻿namespace DecoratorValidation.Core
+{
+    public enum NodeType
+    {
+        NoPkpSection,
+        AssemblyUnitSection,
+        DetailSection,
+        StandardProductSection,
+        MaterialSection,
+        PackageSection,
+        Pkp,
+        Tk,
+        Kc,
+        Description,
+        Quantity,
+        QuantityPerUnit,
+        Customer,
+        To,
+        Pokr,
+        Spsh,
+        Mass,
+        Material,
+        SeriesFrom,
+        SeriesTo,
+        DocumentHeader,
+        DocumentBody,
+        DocumentNumber,
+        DocumentDate,
+        DocumentRow,
+        ProductChipher,
+        ArrayChipher,
+        KtcDocument,
+        AssemblyDrawing,
+    }
+}
