@@ -3,6 +3,7 @@
     public class ValidationResult : IValidationResult
     {
         public static readonly IValidationResult Empty = new ValidationResult();
+        public static readonly IValidationResult Valid = new ValidationResult(true);
 
         public ValidationResult(bool isValid = false, string message = "")
         {

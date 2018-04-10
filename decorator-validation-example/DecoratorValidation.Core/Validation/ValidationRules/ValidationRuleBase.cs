@@ -2,13 +2,13 @@
 {
     public abstract class ValidationRuleBase : IValidationRule
     {
-        protected string _message;
+        protected string Message;
 
         protected ValidationRuleBase(string message = "")
         {
-            _message = message
+            Message = message;
         }
 
-        public abstract IValidationResult Validate(IValidationNode node);
+        public abstract IValidationResult Validate(IValidationNode node, IValidationService service);
     }
 }

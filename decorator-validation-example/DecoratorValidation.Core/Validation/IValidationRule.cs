@@ -2,6 +2,6 @@
 {
     public interface IValidationRule
     {
-        IValidationResult Validate(IValidationNode node);
+        IValidationResult Validate(IValidationNode node, IValidationService service);
     }
 }
