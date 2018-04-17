@@ -3,28 +3,40 @@ using GalaSoft.MvvmLight;
 
 namespace DecoratorValidation.Core
 {
-    public class NodeValidationDecorator : ViewModelBase, INodeViewModel
+    public class NodeValidationDecorator : ViewModelBase, INodeViewModel, IValidationNode
     {
         private readonly IValidationService _validationService;
 
-        private readonly IValidationNode _validationNode;
+        public IValidationNode ValidationNode { get; }
+
+        #region IValidationNode
+        int IValidationNode.Depth => ValidationNode.Depth;
+
+        IValidationNode IValidationNode.Parent => ValidationNode.Parent;
+
+        IList<IValidationNode> IValidationNode.Children => ValidationNode.Children;
+
+        INodeViewModel IValidationNode.Node => ValidationNode.Node;
+
+        IValidationResult IValidationNode.ValidationState => ValidationNode.ValidationState;
+        #endregion
 
         #region INodeViewModel
 
-        public INodeViewModel Parent => _validationNode.Node.Parent;
-        public IList<INodeViewModel> Children => _validationNode.Node.Children;
+        public INodeViewModel Parent => ValidationNode.Node.Parent;
+        public IList<INodeViewModel> Children => ValidationNode.Node.Children;
 
         public string Value
         {
-            get => _validationNode.Node.Value;
+            get => ValidationNode.Node.Value;
             set
             {
-                _validationNode.Node.Value = value;
+                ValidationNode.Node.Value = value;
                 RaisePropertyChanged();
             }
         }
 
-        public NodeType NodeType => _validationNode.Node.NodeType;
+        public NodeType NodeType => ValidationNode.Node.NodeType;
 
         #endregion
 
@@ -32,7 +44,7 @@ namespace DecoratorValidation.Core
             IValidationNode validationNode,
             IValidationService validationService)
         {
-            _validationNode = validationNode;
+            ValidationNode = validationNode;
             _validationService = validationService;
         }
     }

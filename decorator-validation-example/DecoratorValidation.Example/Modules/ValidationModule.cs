@@ -7,7 +7,7 @@ namespace DecoratorValidation.Example.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<ValidationService>().As<IValidationService>();
+            builder.RegisterType<NullValidationService>().As<IValidationService>();
         }
     }
 }
