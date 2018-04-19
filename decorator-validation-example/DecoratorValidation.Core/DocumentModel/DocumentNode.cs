@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 
 namespace DecoratorValidation.Core.DocumentModel
@@ -9,9 +10,12 @@ namespace DecoratorValidation.Core.DocumentModel
         public IList<INodeViewModel> Children { get; } = new List<INodeViewModel>();
 
         public string Value { get; set; }
-        public NodeType NodeType { get; }
+        public int IntValue => int.Parse(Value);
+        public double DoubleValue => double.Parse(Value);
+        public DateTime DateValue => DateTime.Parse(Value);
+        public string NodeType { get; }
 
-        public DocumentNodeViewModel(INodeViewModel parent, NodeType nodeType)
+        public DocumentNodeViewModel(INodeViewModel parent, string nodeType)
         {
             Parent = parent;
             NodeType = nodeType;

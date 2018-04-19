@@ -4,11 +4,16 @@ namespace DecoratorValidation.Core
 {
     public class ValidationService : IValidationService
     {
-        private readonly IDictionary<NodeType, IList<IValidationRule>> _nodeRules = new Dictionary<NodeType, IList<IValidationRule>>();
+        private readonly IDictionary<string, IList<IValidationRule>> _nodeRules = new Dictionary<string, IList<IValidationRule>>();
 
-        private readonly HashSet<IValidationNode> _nodes = new HashSet<IValidationNode>();
+        private readonly IValidationProcessor _validationProcessor;
 
-        public IEnumerable<IValidationRule> GetRules(NodeType nodeType)
+        public ValidationService(IValidationProcessor validationProcessor)
+        {
+            _validationProcessor = validationProcessor;
+        }
+
+        private IEnumerable<IValidationRule> GetRules(string nodeType)
         {
             return _nodeRules.TryGetValue(nodeType, out var rules) ? 
                 rules : 
@@ -16,6 +21,11 @@ namespace DecoratorValidation.Core
         }
 
         public void RegisterRules(NodeType nodeType, params IValidationRule[] rules)
+        {
+            RegisterRules(nodeType.ToString(), rules);
+        }
+
+        public void RegisterRules(string nodeType, params IValidationRule[] rules)
         {
             IList<IValidationRule> existingRules;
             if (_nodeRules.TryGetValue(nodeType, out existingRules))
@@ -32,14 +42,9 @@ namespace DecoratorValidation.Core
             _nodeRules.Add(nodeType, existingRules);
         }
 
-        public void Register(IValidationNode node)
+        public void Validate(INodeViewModel node)
         {
-            _nodes.Add(node);
-        }
-
-        public void Unregister(IValidationNode node)
-        {
-            _nodes.Remove(node);
+            _validationProcessor.ProcessNode(node, GetRules(node.NodeType));
         }
     }
 }

@@ -3,12 +3,11 @@ using DecoratorValidation.Core;
 using DecoratorValidation.Core.DocumentModel;
 using DecoratorValidation.Core.DocumentModel.KTC;
 
-namespace DecoratorValidation.Example.Modules
+namespace DecoratorValidation.Registration.Modules
 {
     public class KtcModule : DocumentModule
     {
         protected override DocumentType Key => DocumentType.KTC;
-
 
         protected override void Load(ContainerBuilder builder)
         {

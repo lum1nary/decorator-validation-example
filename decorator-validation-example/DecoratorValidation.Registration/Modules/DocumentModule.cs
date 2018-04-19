@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace DecoratorValidation.Example.Modules
+namespace DecoratorValidation.Registration.Modules
 {
     public abstract class DocumentModule : Module
     {

@@ -23,7 +23,12 @@ namespace DecoratorValidation.Core
 
         public INodeViewModel Create(INodeViewModel parent, NodeType nodeType)
         {
-            var actualParent = (IValidationNode) parent;
+            return Create(parent, nodeType.ToString());
+        }
+
+        public INodeViewModel Create(INodeViewModel parent, string nodeType)
+        {
+            var actualParent = (IValidationNode)parent;
             var node = _decoratedFactory.Create(parent, nodeType);
             var result = new NodeValidationDecorator(new ValidationNode(node, actualParent), _service);
 

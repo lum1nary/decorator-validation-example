@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DecoratorValidation.Core.TreeConductors;
 
 namespace DecoratorValidation.Core.ValidationRules
 {
@@ -13,7 +13,7 @@ namespace DecoratorValidation.Core.ValidationRules
             _max = max;
         }
 
-        public IValidationResult Validate(IValidationNode node, IValidationService service)
+        public IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> conductor)
         {
             var length = node.Node.Value.Length;
             return (length >= _min && length <= _max)

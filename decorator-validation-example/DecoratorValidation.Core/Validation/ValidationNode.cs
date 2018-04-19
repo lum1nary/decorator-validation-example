@@ -9,9 +9,9 @@ namespace DecoratorValidation.Core
         public virtual IValidationNode Parent { get; }
         public IList<IValidationNode> Children { get; } = new List<IValidationNode>();
 
-        public INodeViewModel Node { get; private set; }
+        public INodeViewModel Node { get; }
 
-        public IValidationResult ValidationState { get; protected set; }
+        public IValidationResult ValidationState { get; set; }
 
         public ValidationNode(INodeViewModel node, IValidationNode parent)
         {

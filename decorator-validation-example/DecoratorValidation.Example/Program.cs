@@ -2,7 +2,8 @@
 using Autofac;
 using DecoratorValidation.Core;
 using DecoratorValidation.Core.DocumentModel;
-using DecoratorValidation.Example.Modules;
+using DecoratorValidation.Registration;
+using DecoratorValidation.Registration.Modules;
 
 namespace DecoratorValidation.Example
 {

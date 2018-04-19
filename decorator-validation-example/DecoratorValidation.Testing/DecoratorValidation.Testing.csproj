@@ -4,4 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DecoratorValidation.Core\DecoratorValidation.Core.csproj" />
+    <ProjectReference Include="..\DecoratorValidation.Example\DecoratorValidation.Example.csproj" />
+  </ItemGroup>
+
 </Project>

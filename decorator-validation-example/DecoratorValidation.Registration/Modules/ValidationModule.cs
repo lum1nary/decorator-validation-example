@@ -1,13 +1,13 @@
 ﻿using Autofac;
 using DecoratorValidation.Core;
 
-namespace DecoratorValidation.Example.Modules
+namespace DecoratorValidation.Registration.Modules
 {
     public class ValidationModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<NullValidationService>().As<IValidationService>();
+            builder.RegisterType<ValidationService>().As<IValidationService>();
         }
     }
 }

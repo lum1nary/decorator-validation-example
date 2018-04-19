@@ -1,4 +1,6 @@
-﻿namespace DecoratorValidation.Core.ValidationRules
+﻿using DecoratorValidation.Core.TreeConductors;
+
+namespace DecoratorValidation.Core.ValidationRules
 {
     public abstract class ValidationRuleBase : IValidationRule
     {
@@ -9,6 +11,6 @@
             Message = message;
         }
 
-        public abstract IValidationResult Validate(IValidationNode node, IValidationService service);
+        public abstract IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> conductor);
     }
 }

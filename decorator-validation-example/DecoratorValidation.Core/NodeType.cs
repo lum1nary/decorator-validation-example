@@ -1,7 +1,8 @@
 ﻿namespace DecoratorValidation.Core
 {
-    public enum NodeType
+    public enum NodeType : ulong
     {
+        Date,
         NoPkpSection,
         AssemblyUnitSection,
         DetailSection,

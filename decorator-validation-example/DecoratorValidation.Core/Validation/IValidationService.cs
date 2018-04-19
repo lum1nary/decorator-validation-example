@@ -4,11 +4,10 @@ namespace DecoratorValidation.Core
 {
     public interface IValidationService
     {
-        IEnumerable<IValidationRule> GetRules(NodeType nodeType);
-
         void RegisterRules(NodeType nodeType, params IValidationRule[] rules);
 
-        void Register(IValidationNode node);
-        void Unregister(IValidationNode node);
+        void RegisterRules(string nodeType, params IValidationRule[] rules);
+
+        IValidationResult Validate(INodeViewModel node);
     }
 }

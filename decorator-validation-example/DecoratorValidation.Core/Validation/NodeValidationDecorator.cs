@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 
 namespace DecoratorValidation.Core
@@ -17,8 +18,14 @@ namespace DecoratorValidation.Core
         IList<IValidationNode> IValidationNode.Children => ValidationNode.Children;
 
         INodeViewModel IValidationNode.Node => ValidationNode.Node;
+        public IValidationResult ValidationState { get; set; }
 
-        IValidationResult IValidationNode.ValidationState => ValidationNode.ValidationState;
+        IValidationResult IValidationNode.ValidationState
+        {
+            get => ValidationNode.ValidationState;
+            set => ValidationNode.ValidationState = value;
+        }
+
         #endregion
 
         #region INodeViewModel
@@ -36,7 +43,11 @@ namespace DecoratorValidation.Core
             }
         }
 
-        public NodeType NodeType => ValidationNode.Node.NodeType;
+        public int IntValue => ValidationNode.Node.IntValue;
+        public double DoubleValue => ValidationNode.Node.DoubleValue;
+        public DateTime DateValue => ValidationNode.Node.DateValue;
+
+        public string NodeType => ValidationNode.Node.NodeType;
 
         #endregion
 
