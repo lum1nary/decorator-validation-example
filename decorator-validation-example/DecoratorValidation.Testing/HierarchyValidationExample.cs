@@ -64,8 +64,10 @@ namespace DecoratorValidation.Testing
             _validationService.Validate(bField);
             _validationService.Validate(cField);
 
-
-
+            //or Alternatively validate upper node with
+            //modification of validation service to pass boolean variable
+            // in validate that order service to validate recursive all part of tree
+            _validationService.Validate(header);
         }
     }
 }

@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.7.1" />
     <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DecoratorValidation.Core\DecoratorValidation.Core.csproj" />
-    <ProjectReference Include="..\DecoratorValidation.Example\DecoratorValidation.Example.csproj" />
+    <ProjectReference Include="..\DecoratorValidation.Registration\DecoratorValidation.Registration.csproj" />
   </ItemGroup>
 
 </Project>

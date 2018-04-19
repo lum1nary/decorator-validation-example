@@ -8,6 +8,6 @@ namespace DecoratorValidation.Core
 
         void RegisterRules(string nodeType, params IValidationRule[] rules);
 
-        IValidationResult Validate(INodeViewModel node);
+        void Validate(INodeViewModel node);
     }
 }

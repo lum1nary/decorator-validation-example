@@ -6,12 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Autofac" Version="4.7.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DecoratorValidation.Core\DecoratorValidation.Core.csproj" />
+    <ProjectReference Include="..\DecoratorValidation.Registration\DecoratorValidation.Registration.csproj" />
   </ItemGroup>
 
 </Project>
