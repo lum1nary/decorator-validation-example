@@ -4,6 +4,6 @@ namespace DecoratorValidation.Core
 {
     public interface IValidationRule
     {
-        IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> treeConductor);
+        IValidationResult Validate(INodeViewModel node, ITreeConductor<INodeViewModel> treeConductor);
     }
 }

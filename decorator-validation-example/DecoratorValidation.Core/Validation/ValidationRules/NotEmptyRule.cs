@@ -4,9 +4,9 @@ namespace DecoratorValidation.Core.ValidationRules
 {
     public class NotEmptyRule : IValidationRule
     {
-        public IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> conductor)
+        public IValidationResult Validate(INodeViewModel node, ITreeConductor<INodeViewModel> conductor)
         {
-            return string.IsNullOrEmpty(node.Node.Value) ? 
+            return string.IsNullOrEmpty(node.Value) ? 
                 new ValidationResult(false, "Value should nod be empty") : 
                 ValidationResult.Valid;
         }

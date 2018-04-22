@@ -11,6 +11,6 @@ namespace DecoratorValidation.Core.ValidationRules
             Message = message;
         }
 
-        public abstract IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> conductor);
+        public abstract IValidationResult Validate(INodeViewModel node, ITreeConductor<INodeViewModel> conductor);
     }
 }

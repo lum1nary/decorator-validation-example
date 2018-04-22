@@ -28,22 +28,19 @@ namespace DecoratorValidation.Testing
             _validationService.RegisterRules("a",
                 new NotEmptyRule(),
                 new DynamicValidationRule((node, conductor) =>
-                    conductor.FindAll(node, i => i.ValidationState.IsValid &&
-                                                 i.Node.NodeType == "b")
-                        .Select(i => i.Node.IntValue)
-                        .All(i => node.Node.IntValue > i)));
+                    conductor.FindAll(node, i => i.NodeType == "b")
+                        .Select(i => int.TryParse(i.Value, out int j) ? j : 0)
+                        .All(i => (int.TryParse(node.Value, out int j) ? j : 0)  > i)));
             _validationService.RegisterRules("b",
                 new NotEmptyRule(),
-                new DynamicValidationRule((node, conductor) => 
-                    conductor.FindAll(node, i => i.Node.NodeType == "a" && 
-                                                 i.ValidationState.IsValid)
-                    .Select(i => i.Node.IntValue)
-                    .All(i => node.Node.IntValue < i)),
                 new DynamicValidationRule((node, conductor) =>
-                    conductor.FindAll(node, i => i.ValidationState.IsValid &&
-                                                 i.Node.NodeType == "c")
-                        .Select(i => i.Node.IntValue)
-                        .All(i => node.Node.IntValue > i))
+                    conductor.FindAll(node, i => i.NodeType == "a")
+                        .Select(i => int.TryParse(i.Value, out int j) ? j : 0)
+                        .All(i => (int.TryParse(node.Value, out int j) ? j : 0) < i)),
+                new DynamicValidationRule((node, conductor) =>
+                    conductor.FindAll(node, i => i.NodeType == "c")
+                        .Select(i => int.TryParse(i.Value, out int j) ? j : 0)
+                        .All(i => (int.TryParse(node.Value, out int j) ? j : 0)  > i))
                 );
 
             _validationService.RegisterRules(NodeType.Date, 
