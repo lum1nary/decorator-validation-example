@@ -1,62 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GalaSoft.MvvmLight;
 
 namespace DecoratorValidation.Core
 {
-    public class NodeValidationDecorator : ViewModelBase, INodeViewModel, IValidationNode
+    public class NodeValidationDecorator : ViewModelBase, IValidationNode
     {
         private readonly IValidationService _validationService;
 
-        public IValidationNode ValidationNode { get; }
+        public INodeViewModel Node { get; }
 
         #region IValidationNode
-        int IValidationNode.Depth => ValidationNode.Depth;
 
-        IValidationNode IValidationNode.Parent => ValidationNode.Parent;
-
-        IList<IValidationNode> IValidationNode.Children => ValidationNode.Children;
-
-        INodeViewModel IValidationNode.Node => ValidationNode.Node;
+        public int Depth => GetCurrentDepth();
         public IValidationResult ValidationState { get; set; }
-
-        IValidationResult IValidationNode.ValidationState
-        {
-            get => ValidationNode.ValidationState;
-            set => ValidationNode.ValidationState = value;
-        }
 
         #endregion
 
         #region INodeViewModel
 
-        public INodeViewModel Parent => ValidationNode.Node.Parent;
-        public IList<INodeViewModel> Children => ValidationNode.Node.Children;
+        public INodeViewModel Parent => Node.Parent;
+        public IList<INodeViewModel> Children => Node.Children;
 
         public string Value
         {
-            get => ValidationNode.Node.Value;
+            get => Node.Value;
             set
             {
-                ValidationNode.Node.Value = value;
+                Node.Value = value;
                 RaisePropertyChanged();
             }
         }
 
-        public int IntValue => ValidationNode.Node.IntValue;
-        public double DoubleValue => ValidationNode.Node.DoubleValue;
-        public DateTime DateValue => ValidationNode.Node.DateValue;
-
-        public string NodeType => ValidationNode.Node.NodeType;
+        public string NodeType => Node.NodeType;
 
         #endregion
 
         public NodeValidationDecorator(
-            IValidationNode validationNode,
+            INodeViewModel node,
             IValidationService validationService)
         {
-            ValidationNode = validationNode;
+            Node = node;
             _validationService = validationService;
+        }
+
+        private int GetCurrentDepth()
+        {
+            int depth = 0;
+
+            var parent = Node.Parent;
+            while (parent != null)
+            {
+                depth++;
+                parent = parent.Parent;
+            }
+
+            return depth;
         }
     }
 }

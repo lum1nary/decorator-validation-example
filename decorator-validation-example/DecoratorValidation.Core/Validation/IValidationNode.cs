@@ -2,15 +2,9 @@
 
 namespace DecoratorValidation.Core
 {
-    public interface IValidationNode
+    public interface IValidationNode : IDecoratedNode
     {
         int Depth { get; }
-
-        IValidationNode Parent { get; }
-
-        IList<IValidationNode> Children { get; }
-
-        INodeViewModel Node { get; }
 
         IValidationResult ValidationState { get; set; }
     }

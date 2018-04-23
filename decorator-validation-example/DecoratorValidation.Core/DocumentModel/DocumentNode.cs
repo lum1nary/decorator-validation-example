@@ -10,9 +10,6 @@ namespace DecoratorValidation.Core.DocumentModel
         public IList<INodeViewModel> Children { get; } = new List<INodeViewModel>();
 
         public string Value { get; set; }
-        public int IntValue => int.Parse(Value);
-        public double DoubleValue => double.Parse(Value);
-        public DateTime DateValue => DateTime.Parse(Value);
         public string NodeType { get; }
 
         public DocumentNodeViewModel(INodeViewModel parent, string nodeType)

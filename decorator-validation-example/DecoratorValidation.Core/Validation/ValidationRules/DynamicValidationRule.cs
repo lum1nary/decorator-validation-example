@@ -7,15 +7,15 @@ namespace DecoratorValidation.Core.ValidationRules
     {
         private readonly string _errorMessage;
 
-        private readonly Func<IValidationNode, ITreeConductor<IValidationNode>, bool> _ruleFunc;
+        private readonly Func<INodeViewModel, ITreeConductor<INodeViewModel>, bool> _ruleFunc;
 
-        public DynamicValidationRule(Func<IValidationNode, ITreeConductor<IValidationNode>, bool> ruleFunc, string errorMessage = "")
+        public DynamicValidationRule(Func<INodeViewModel, ITreeConductor<INodeViewModel>, bool> ruleFunc, string errorMessage = "")
         {
             _ruleFunc = ruleFunc;
             _errorMessage = errorMessage;
         }
 
-        public IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> treeConductor)
+        public IValidationResult Validate(INodeViewModel node, ITreeConductor<INodeViewModel> treeConductor)
         {
             return _ruleFunc(node, treeConductor) ? 
                 new ValidationResult(true) : 

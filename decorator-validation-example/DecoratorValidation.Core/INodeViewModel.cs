@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace DecoratorValidation.Core
@@ -13,13 +12,6 @@ namespace DecoratorValidation.Core
 
         string Value { get; set; }
 
-        int IntValue { get; }
-
-        double DoubleValue { get; }
-
-        DateTime DateValue { get; }
-
         string NodeType { get; }
     }
-
 }

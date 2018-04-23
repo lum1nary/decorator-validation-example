@@ -13,9 +13,9 @@ namespace DecoratorValidation.Core.ValidationRules
             _max = max;
         }
 
-        public IValidationResult Validate(IValidationNode node, ITreeConductor<IValidationNode> conductor)
+        public IValidationResult Validate(INodeViewModel node, ITreeConductor<INodeViewModel> conductor)
         {
-            var length = node.Node.Value.Length;
+            var length = node.Value.Length;
             return (length >= _min && length <= _max)
                 ? ValidationResult.Valid
                 : new ValidationResult(false, "Value length is not in allowed range");
